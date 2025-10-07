@@ -1,5 +1,5 @@
 type EventMap = {
-  [key: string]: (...args: any[]) => void;
+  [key: string]: (...args: any[]) => any;
 };
 
 export class EventEmitter<T extends EventMap> {
