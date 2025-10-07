@@ -1,0 +1,28 @@
+* {
+    all: unset;
+
+    box-sizing: border-box;
+    display: block;
+}
+
+head, script, style, link, meta {
+    display: none;
+}
+
+html, body {
+    min-width: 100vw;
+    width: 100vw;
+
+    min-height: 100vh;
+    height: 100vh;
+
+    background: black;
+}
+
+.display {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100dvw;
+    height: 100dvh;
+}
