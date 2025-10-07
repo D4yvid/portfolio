@@ -31,6 +31,11 @@ export abstract class Surface extends EventEmitter<SurfaceEventMap> {
     this.display = display;
   }
 
+  /**
+   * Attach a buffer to this surface. When this is in the `frame.requested` event callback, this is 
+   * 
+   * @param buffer The buffer to attach this surface into
+   */
   public attachBuffer(buffer: Optional<Buffer>) {
     if (!this.requestedFrame) {
       // An frame was not requested, cannot change the buffer of this surface
@@ -75,7 +80,7 @@ export abstract class Surface extends EventEmitter<SurfaceEventMap> {
     Event extends keyof SurfaceEventMap,
     Params extends Parameters<SurfaceEventMap[Event]> = Parameters<SurfaceEventMap[Event]>
   >(event: Event, ...args: Params): Promise<void> {
-    if (event == 'frame.requested' && !this.requestedFrame && !this.inFrameRequestedCallback)
+    if (event == 'frame.requested' && !this.requestedFrame || this.inFrameRequestedCallback)
       return;
 
     if (event == 'frame.requested') {
