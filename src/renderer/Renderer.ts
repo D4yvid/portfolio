@@ -1,5 +1,3 @@
-import { UnsupportedError } from "../exception/UnsupportedError";
-
 export abstract class Renderer<ContextType = RenderingContext> {
   protected readonly context: ContextType;
 

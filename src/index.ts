@@ -3,6 +3,7 @@ import { NotFoundError } from "./exception/NotFoundError";
 import { DOMKeyboard } from "./keyboard/DOMKeyboard";
 import { DOMMouse } from "./mouse/DOMMouse";
 import { Seat } from "./seat/Seat";
+import { WindowManager } from "./wm/WindowManager";
 
 function globalErrorHandler(error: Error) {
   const NOTICE = `If you want to debug this, please type 'yes' down. Otherwise, the page will reload.`;
@@ -30,7 +31,10 @@ async function main() {
 
   const seat = new Seat(display, keyboard, mouse);
 
-  seat.init();
+  const wm = new WindowManager(seat);
+
+  wm.init();
+  wm.start();
 }
 
 main().catch(globalErrorHandler);
